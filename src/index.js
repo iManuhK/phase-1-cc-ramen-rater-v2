@@ -2,30 +2,33 @@
 
 // Callbacks
 const handleClick = (ramen) => {
-  console.log(ramen.target)
+  
   // Add code
-  fetch("http://localhost:3000/ramens")
+  fetch(`http://localhost:3000/ramens`)
   .then(res=>res.json())
   .then(ramens=>{
-    let poster = document.createElement('img')
-    for (let i of ramens){
+    for ( let i = 0; i<ramens.length; i++){
+      console.log(ramen.target)
+     // document.getElementById('rating-display').innerHTML = ramens[i].rating
 
-      // document.querySelectorAll('.detail-image')[5].src=`${ramen.target.src}`
+    } 
+    })
+  };
       // document.querySelectorAll('h2')[0].innerContent = `${.name}`
       // document.querySelectorAll('h3')[0].innerContent = `${ramen.target.restaurant}`
-     document.getElementById('rating-display').innerHTML = ramen[i].rating
+     //document.getElementById('rating-display').innerHTML = ramens[i].rating
      // document.querySelectorAll('h3')[0].innerContent = `${element.restaurant}`
       
   //     console.log(poster)
      // poster.innerHTML = ramens[i].src
 
-     // document.getElementById('detail-image').appendChild(poster)
+//      // document.getElementById('detail-image').appendChild(poster)
     
-    }
-  })
-  //console.log(document.querySelectorAll('.detail-image')[5])
+//     }
+//   })
+//   //console.log(document.querySelectorAll('.detail-image')[5])
 
-};
+// };
 
 const addSubmitListener = () => {
   // Add code
@@ -39,7 +42,7 @@ const displayRamens = () => {
   .then(ramens=>{
     ramens.forEach(element => {
   let imageRamens = document.createElement('img')
-  imageRamens.addEventListener('click',handleClick)
+  imageRamens.addEventListener('click', handleClick)
   imageRamens.setAttribute('src', `${element.image}`)
   imageRamens.setAttribute('class', 'detail-image')
   let nameRamens = document.createElement('h2')
