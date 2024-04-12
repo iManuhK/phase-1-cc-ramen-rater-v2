@@ -1,16 +1,13 @@
 // index.js
 
 // Callbacks
-const handleClick = (ramen) => {
+const handleClick = (element) => {
   // Add code
-fetch('http://localhost:3000/ramens')
-.then(res=>res.json())
-then(foods=>{
-  for(let food of foods){
-
-    console.log(food)
-  }
-})
+  document.querySelector('img.detail-image').src = element.image
+  document.querySelector('h2').innerText = element.name
+  document.querySelector('h3.restaurant').innerText = element.restaurant
+  document.getElementById('rating-display').innerText = element.rating
+  document.getElementById('comment-display').innerText = element.comment
 };
 
 const addSubmitListener = () => {
@@ -42,7 +39,7 @@ fetch('http://localhost:3000/ramens',{
 const displayRamens = (element) => {
   // Add code
   let ramenPics = document.createElement ('div')
-  ramenPics.addEventListener('click', handleClick)
+  ramenPics.addEventListener('click', e=>handleClick(element))
   ramenPics.innerHTML = `<img src= ${element.image}>`
  document.getElementById('ramen-menu').appendChild(ramenPics)
 };
